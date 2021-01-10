@@ -9,17 +9,16 @@ exports.postRave = async (req, res) => {
         let response = await axios.post("https://api.flutterwave.com/v3/payments", body, {
             headers
         })
-        console.log(response.data)
-        res.status(200).send({
-            status: true,
+
+        const statusCode = response.status
+        res.status(statusCode).send({
+            status: statusCode == 200 ? true : false,
             data: response.data
         })
     } catch (err) {
-        console.log(err)
-
         res.status(401).send({
             status: false,
-            data: err.data.message
+            error: err.message
         })
     }
 }
