@@ -11,8 +11,9 @@ exports.postRave = async (req, res) => {
         })
 
         const statusCode = response.status
+        const raveStatus = response.data.status
         res.status(statusCode).send({
-            status: statusCode == 200 ? true : false,
+            status: statusCode == 200 && raveStatus == 'success' ? true : false,
             data: response.data
         })
     } catch (err) {
