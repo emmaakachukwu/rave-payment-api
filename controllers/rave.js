@@ -1,6 +1,8 @@
 const axios = require('axios')
 
 exports.postRave = async (req, res) => {
+    // const body = req.body
+    // const headers = req.headers
     const headers = {
         'Content-Type': 'application/json',
         'Authorization': 'FLWSECK-48e4afbf3e4212654b75e3e92f2333ed-X'
